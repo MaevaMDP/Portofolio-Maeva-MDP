@@ -1,0 +1,753 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Applique Inter partout par défaut */
+    background-color: #f5f6f8;
+}
+@keyframes apparitionDouce {
+    0% {
+        opacity: 0; /* Totalement transparent au début */
+        transform: translateY(20px); /* Décalé de 20 pixels vers le bas */
+    }
+    100% {
+        opacity: 1; /* Totalement visible à la fin */
+        transform: translateY(0); /* Remis à sa position normale */
+    }
+}
+
+.layout-wrapper {
+    display: flex;
+    min-height: 100vh; 
+}
+
+
+.sidebar {
+    width: 250px !important;
+    min-width: 250px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-right: 1px solid #e2e8f0;
+    padding: 40px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex !important; /* Doit être en flex pour que margin-top: auto fonctionne */
+    flex-direction: column;
+}
+
+
+.logo-text {
+    font-family: 'Playfair Display', serif; /* La police élégante */
+    font-size: 24px; /* On peut l'agrandir un tout petit peu */
+    color: #000000;
+    margin-bottom: 50px;
+}
+
+.menu-title {
+    font-weight: bold;
+    color: #000000;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.menu-links {
+    display: flex;
+    flex-direction: column; 
+    gap: 12px; 
+}
+
+.menu-links a {
+    text-decoration: none; 
+    color: #718096; 
+    font-size: 14px;
+    transition: color 0.3s ease; 
+}
+
+.menu-links a:hover {
+    color: #1a365d; 
+}
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; /* C'est margin-TOP qui pousse le bloc vers le bas */
+}
+
+.social-links a {
+    text-decoration: none;
+    font-size: 13px; /* Un peu plus petit que le menu principal */
+    color: #a0aec0; /* Un gris un peu plus clair pour hiérarchiser l'information */
+    text-transform: uppercase; /* Met le texte en MAJUSCULES pour le style "brand design" */
+    letter-spacing: 1px; /* Espace légèrement les lettres */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1a365d;
+}
+.main-content {
+    flex: 1; 
+    background-color: #f5f6f8; 
+    animation: apparitionDouce 0.8s ease forwards;
+}
+
+.header-center h1 {
+    margin: 0; 
+}
+.header-left, .header-right {
+    flex: 1; 
+}
+
+.header-center {
+    text-align: center; 
+}
+
+.header-right {
+    text-align: right; 
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.full_width {
+    width: 100%;
+    margin: ;
+}
+.gallery {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+.intro-section {
+    padding: 80px 40px;
+    display: flex; /* Active le mode côte à côte */
+    flex-direction: row; /* Image à gauche, texte à droite */
+    align-items: center; /* Centre verticalement la photo et le texte */
+    justify-content: center;
+    gap: 60px; /* L'espace entre la photo et le texte */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- LA PHOTO --- */
+.intro-photo {
+    flex-shrink: 0; /* Empêche la photo de s'écraser si l'écran est petit */
+}
+
+.intro-photo img {
+    width: 320px; /* Ajuste la taille de la photo ici */
+    height: auto;
+    border-radius: 8px; /* Bords très légèrement arrondis */
+    border: 6px solid #ffffff; /* Le cadre blanc autour de la photo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Une ombre très légère pour détacher la photo */
+}
+
+/* --- LE TEXTE --- */
+.intro-content {
+    display: flex;
+    flex-direction: column;
+}
+.intro-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #49376a;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: left; /* Force le texte à s'aligner à gauche comme sur ta maquette */
+}
+
+.scroll-text {
+    font-size: 14px;
+    color: #5b3e61;
+    text-align: left;
+}
+.page-accueil p { 
+    color: #5b3e61; /* Ton texte en blanc */
+    
+    /* La magie opère ici : décalage X, décalage Y, flou, couleur (noir à 40% d'opacité) */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4); 
+    
+    /* Optionnel : un peu plus d'épaisseur de police aide aussi la lisibilité en blanc */
+    font-weight: 500; 
+}
+
+.scroll-text {
+    font-size: 14px;
+    color: #5b3e61; 
+}
+
+.gallery-grid {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    padding: 0 40px 40px 40px; 
+}
+
+.gallery-grid a {
+    display: block;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.5s ease; 
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.03); 
+    opacity: 0.9; 
+}
+
+.project-article {
+    padding: 60px 40px;
+    max-width: 800px; /* On limite la largeur pour que le texte reste lisible */
+    margin: 0 auto; /* Centre l'article au milieu de la colonne de droite */
+}
+
+/* Titres de l'article */
+.project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: #5b3e61;
+    margin-bottom: 10px;
+}
+
+.project-subtitle {
+    font-size: 18px;
+    color: #718096;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+/* L'image principale (Hero image) en haut de l'article */
+.project-hero-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 40px;
+}
+
+/* Le corps du texte */
+.project-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2d3748;
+}
+
+.project-text h3 {
+    font-family: 'Playfair Display', serif;
+    color: #1a365d;
+    margin-top: 40px;
+}
+.contact-section {
+    padding: 60px 40px;
+    max-width: 600px; /* Un formulaire trop large est désagréable à remplir */
+    margin: 0 auto;
+}
+
+.contact-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column; /* Aligne les champs les uns sous les autres */
+    gap: 24px; /* Espace proprement chaque bloc du formulaire */
+}
+
+/* Le texte au-dessus des champs */
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a365d;
+    margin-bottom: 8px;
+}
+
+/* Les champs de saisie (texte court et texte long) */
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0; /* Une bordure très fine et discrète */
+    border-radius: 4px; /* Des coins très légèrement arrondis */
+    box-sizing: border-box; /* Essentiel pour que le champ ne dépasse pas du cadre */
+    transition: border-color 0.3s ease;
+}
+
+/* L'effet quand on clique dans un champ pour écrire */
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none; /* Enlève le contour bleu par défaut du navigateur */
+    border-color: #1a365d; /* La bordure devient bleu marine pour guider l'oeil */
+}
+
+/* Le bouton d'envoi */
+.submit-btn {
+    background-color: #1a365d;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2c5282; /* Le bleu s'éclaircit légèrement au survol */
+}
+.about-section {
+    padding: 80px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex; /* Met les deux boîtes (image et texte) côte à côte */
+    gap: 60px; /* Un grand espace très élégant entre la photo et le texte */
+    align-items: center; /* Centre le tout verticalement */
+}
+
+/* La zone de l'image */
+.about-image {
+    flex: 1; /* Prend la moitié de l'espace */
+}
+
+.about-image img {
+    width: 100%;
+    height: 500px; /* Une belle hauteur pour un format portrait */
+    object-fit: cover;
+    border-radius: 4px; /* Adoucit très légèrement les angles */
+}
+
+/* La zone de texte */
+.about-text {
+    flex: 1; /* Prend l'autre moitié de l'espace */
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2d3748;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+/* Une petite boîte stylisée pour mettre en valeur ta recherche de stage */
+.highlight-box {
+    margin-top: 40px;
+    padding: 24px;
+    background-color: #f0f4f8; /* Un gris-bleu très très clair */
+    border-left: 4px solid #1a365d; /* Une ligne verticale bleue pour attirer l'oeil */
+}
+
+.highlight-box p {
+    margin: 0;
+    color: #1a365d;
+}
+.menu-links a.active {
+    color: #1a365d; /* Le bleu marine foncé */
+    font-weight: 600; /* Écrit plus épais */
+}
+@media (max-width: 768px) {
+    
+    .layout-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; 
+        padding: 30px 20px;
+    }
+
+    .intro-section {
+        padding: 40px 20px;
+    }
+    .intro-text {
+        font-size: 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; 
+        padding: 0 20px 40px 20px;
+    }
+}
+.about-section {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+.galerie-affiches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Met 2 images par ligne */
+    gap: 30px;
+    padding: 40px;
+}
+
+/* La boîte qui contient l'image et le texte */
+.affiche-item {
+    position: relative;
+    overflow: hidden; /* Empêche l'image de déborder quand elle zoome */
+    border-radius: 4px;
+}
+
+.affiche-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease; /* Prépare le zoom fluide */
+}
+
+/* Le fond coloré qui contient le texte */
+.affiche-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 54, 93, 0.85); /* Ton bleu marine en semi-transparent */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0; /* Totalement invisible au départ */
+    transition: opacity 0.4s ease; /* Prépare l'apparition en fondu */
+    box-sizing: border-box; 
+    
+    background-color: rgba(26, 54, 93, 0.85);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* L'action déclenchée par la souris */
+.affiche-item:hover .affiche-overlay {
+    opacity: 1; /* Le texte et le fond bleu apparaissent */
+}
+
+.affiche-item:hover img {
+    transform: scale(1.05); /* L'image zoome très légèrement en arrière-plan */
+}
+.affiche-overlay p {
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', serif;
+    font-size: 18px; /* Tu pourras ajuster cette taille selon tes préférences */
+    margin: 0;
+}
+.galerie-2-colonnes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 40px 40px 40px; /* J'ai mis 0 en haut pour que cette grille ne soit pas trop éloignée de celle du dessus */
+}
+.affiche-item {
+    cursor: pointer;
+}
+
+.modal {
+    display: none; /* Invisible par défaut */
+    position: fixed; 
+    z-index: 1000; /* Passe par-dessus le menu et tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); /* Fond noir transparent */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+}
+
+/* L'image une fois ouverte */
+.modal-content {
+    display: block; /* Force l'image à se comporter comme un gros bloc */
+    max-width: 90vw; /* 90% de la largeur de l'écran */
+    max-height: 90vh; /* 90% de la hauteur de l'écran */
+    width: auto; 
+    height: auto;
+    object-fit: contain; 
+    border-radius: 4px;
+    animation: zoomRapide 0.3s ease; 
+    margin: auto; /* S'assure qu'elle est bien au centre */
+}
+
+/* L'animation fluide */
+@keyframes zoomRapide {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* La croix pour fermer */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #1a365d; /* Ton bleu au survol de la croix */
+}
+.galerie-7-colonnes {
+    display: grid;
+    /* La partie magique : on dit à la grille de créer 7 colonnes de largeur égale */
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px; /* On réduit un peu l'espace pour que ça tienne sur l'écran */
+    padding: 0 40px 40px 40px;
+}
+.menu-links a.active {
+    color: #1a365d; 
+    font-weight: bold;
+}
+body.page-accueil {
+    /* Le dégradé : part du rose en haut à gauche vers le blanc en bas à droite */
+    background: linear-gradient(135deg, #FFDBFC 0%, #FFFFFF 100%);
+    
+    /* Assure que le dégradé couvre bien toute la hauteur de l'écran, même s'il y a peu de texte */
+    min-height: 100vh;
+    
+    /* Empêche le fond de se répéter si la page est très longue */
+    background-attachment: fixed;
+}
+
+body.page-accueil .layout-wrapper,
+body.page-accueil .main-content {
+    background-color: transparent;
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: start; /* Crucial pour ne pas étirer les images */
+}
+
+/* On cible une image sur deux pour la décaler vers le bas */
+.portfolio-grid .portfolio-image:nth-child(even) {
+    margin-top: 80px;
+}
+
+.titre-fusion {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #2C2A29; 
+    mix-blend-mode: difference; /* Le texte s'inverse par rapport au fond */
+    z-index: 10;
+    /* À positionner en 'absolute' pour déborder sur ton image */
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Crucial : permet de cliquer "à travers" le grain */
+    z-index: 9999; /* Toujours au premier plan */
+    
+    /* Génération du bruit en SVG */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    
+    /* On règle l'intensité ici (0.04 c'est très subtil) */
+    opacity: 0.04; 
+}
+.reveal {
+    opacity: 0; /* L'élément est transparent au départ */
+    transform: translateY(40px); /* L'élément est décalé vers le bas */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* La fluidité du mouvement */
+}
+
+.reveal.active {
+    opacity: 1; /* L'élément devient visible */
+    transform: translateY(0); /* L'élément remonte à sa place naturelle */
+}
+.sidebar {
+    /* 1. Structure interne et espacement (pour ranger tes menus) */
+    box-sizing: border-box; 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+    left: -300px; 
+    top: 0;
+    height: 100vh;
+    width: 300px; 
+    z-index: 1000;
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
+    
+    /* 3. Le fond avec ton image (sans le filtre qui effaçait tout) */
+background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/images1/fond_sidebar.svg') !important;    
+    /* ⚠️ VÉRIFIE BIEN CE CHEMIN : As-tu vraiment créé un dossier "images1" dans ton dossier "images" ? */
+    background-image: url('images/images1/fond_sidebar.svg'); 
+    
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+/* 2. La zone de déclenchement (une bande de 30px à gauche de l'écran) */
+.zone-declencheur {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 30px; 
+    height: 100vh;
+    z-index: 999;
+}
+
+/* 3. L'action : Quand on survole la zone OU la sidebar elle-même, elle revient à left: 0 */
+.zone-declencheur:hover + .sidebar,
+.sidebar:hover {
+    left: 0;
+}
+
+/* 4. On adapte le contenu principal pour qu'il prenne 100% de la largeur maintenant que la barre est cachée */
+.layout-wrapper {
+    display: block; 
+}
+
+.main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 50px; /* On laisse un petit espace à gauche pour que le texte ne touche pas le bord */
+}
+.icone-menu {
+    position: fixed;
+    top: 30px;
+    left: 20px;
+    font-size: 32px; /* Taille de l'icône */
+    color: #1a365d; /* Ton bleu foncé professionnel */
+    z-index: 999;
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* Optionnel : Une petite ombre pour qu'elle se détache bien de tes photos */
+    text-shadow: 0px 2px 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Le détail "agence" : l'icône réagit quand on approche la souris */
+.zone-declencheur:hover .icone-menu {
+    transform: scale(1.1); /* Grossit légèrement */
+    color: #FFDBFC; /* Passe en rose pastel au survol */
+}
+body { margin: 0; font-family: 'Inter', sans-serif; background-color: #f5f6f8; }
+
+/* 1. Le conteneur qui force la mise en page en deux colonnes */
+.layout-wrapper {
+    display: flex !important; /* !important force le navigateur à appliquer le flex */
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* 2. La sidebar : largeur fixe et forcée */
+/* 2. La sidebar : largeur fixe et forcée */
+.sidebar {
+    width: 250px !important;
+    min-width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 40px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    box-sizing: border-box !important;
+    display: flex !important; 
+    flex-direction: column !important;
+}
+
+/* 3. Le contenu de droite */
+.main-content {
+    flex: 1;
+    padding: 50px;
+    background-color: #f5f6f8;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 4. Pour être sûr que rien ne cache la sidebar */
+.logo-text { font-family: 'Playfair Display', serif; font-size: 24px; color: #000000; }
+/* --- RÉGLAGES RESPONSIVE GÉNÉRAUX --- */
+
+/* Pour les tablettes et petits écrans (max 1024px) */
+@media (max-width: 1024px) {
+    .galerie-affiches, .galerie-2-colonnes {
+        grid-template-columns: repeat(2, 1fr) !important; /* Passe à 2 colonnes */
+    }
+}
+
+/* Pour les téléphones (max 768px) */
+@media (max-width: 768px) {
+    .layout-wrapper {
+        flex-direction: column !important; /* Empile sidebar et contenu */
+    }
+
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        padding: 20px !important;
+    }
+
+    /* Passe les galeries en une seule colonne sur mobile */
+    .galerie-affiches, .galerie-2-colonnes {
+        grid-template-columns: 1fr !important;
+        padding: 20px !important;
+    }
+
+    .main-content {
+        padding: 20px !important;
+    }
+
+    .project-title { font-size: 32px !important; }
+}
+.gallery-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    color: #49376a; /* Couleur de ton texte */
+    font-weight: bold;
+    font-size: 18px;
+    opacity: 0; /* Caché au repos */
+    transition: opacity 0.3s ease; /* Effet de fondu doux */
+}
+
+.gallery-item:hover .hover-text {
+    opacity: 1; /* Apparaît au survol */
+}
